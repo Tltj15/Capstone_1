@@ -61,7 +61,7 @@ group by month, inventory_categories.Category, SalesManager, Region
 order by min(Transaction_Date), Category;
 -- 6 categories so each month will show category--
 -- dateformat i used is month abbriveation and last two year number-- 
--- throught the table category TECH and TEXTBOOK have the highest avg_transactions in any month/year --
+-- through out the table category TECH and TEXTBOOK have the highest avg_transactions in any month/year --
 
 /*Can you provide a ranking of in-store sales performance by each store in the sales territory, or a
 ranking of online sales performance by state within an online sales territory?*/
@@ -112,15 +112,16 @@ ORDER BY avg_order_value DESC;
 -- in connecticut the average order value is lower then new york by, 66.29 ( NY 722.37 - CONN 656.08)
 
 -- for ellen in monthly sales tranaction size average TECH and TEXTBOOKs are ellens highest sales amount in store
-SELECT products.CategoryID, AVG(Sale_Amount) AS overall_avg_transaction_size
+SELECT products.CategoryID, AVG(Sale_Amount) AS overall_avg_transaction_size, Category
 FROM Store_Sales 
 JOIN store_locations ON store_sales.Store_ID = store_locations.StoreId
 JOIN management ON store_locations.State = management.State
 JOIN Products ON store_sales.Prod_Num = products.ProdNum
+join inventory_categories on inventory_categories.Categoryid = products.Categoryid
 WHERE SalesManager = 'Ellen Lemon'
-GROUP BY CategoryID
+GROUP BY CategoryID, Category
 ORDER BY overall_avg_transaction_size DESC;
--- this table shows the 6 catergories for ellen and the over all average tranaaction size per catergoryid
+-- this table shows the 6 catergories for ellen and the over all average transaction size per catergoryid
 -- the top catergories are 120 Tech, 100 textbook, and 115 art supplies with tech having the highest avergae 
 -- overall Ellen should focus on instore tech sales for the next quarter for storeid 871 as it was the lowest store she has. Since tech had he highest average transaction size, ellen should have her staff at all 8 stores focus on upselling tech items.--
 -- a tech (laptop that cost 500.00) and a textbook ( that cost 100.00), tech has a higher revenue impact
