@@ -6,4 +6,4 @@ Analyze sales data of a growing business EmporiUm, a student bookstore chain tha
 This project focuses on the sales territory for sales manager Ellen Lemon, who has state Connecticut and in the East region. This analysis will provide insight into sales performance for Ellen instore and online. Based on the data pulled and verified over a few queries, here is a data-driven recommendation for Ellen Lemon’s territory.
 
 #demo 
-clcik here to watch my the 10min project presentaion : https://drive.google.com/file/d/1m3btmu5T7fZSO77QaSU7SV-D3UqIcksQ/view?usp=sharing
+click here to watch my 10min project presentation : https://drive.google.com/file/d/1m3btmu5T7fZSO77QaSU7SV-D3UqIcksQ/view?usp=sharing
