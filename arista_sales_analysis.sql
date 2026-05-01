@@ -83,8 +83,17 @@ join management on management.State = online_sales.ShiptoState
 where Region = 'East'
 group by ShiptoState, Region
 order by performance desc;
+-- this new equation will show the categoryid to see what products are top avg sales amount products.
+SELECT ShiptoState, SUM(SalesTotal) AS total_online_rev, COUNT(*) AS total_transactions,
+    AVG(SalesTotal) AS avg_order_value, Categoryid 
+FROM online_sales
+join products on products.ProdNum = online_sales.ProdNum
+WHERE ShiptoState IN ('Connecticut', 'New York')
+GROUP BY ShiptoState, Categoryid
+ORDER BY avg_order_value DESC;
 -- this shows the online ranking performace by state in the east region but i know by now that ellen only has state Connecticut in the east --
 -- 'Connecticut' preformance 810,270.94 and new york performance 3,143,787.73,  NY is higher.-- 
+-- categoryid 120, 100 and 130 for ellen make the most online revenue and have the highest avg order value.--
 
 
 /*What is your recommendation for where to focus sales attention in the next quarter?*/
@@ -126,4 +135,4 @@ ORDER BY overall_avg_transaction_size DESC;
 -- overall Ellen should focus on instore tech sales for the next quarter for storeid 871 as it was the lowest store she has. Since tech had he highest average transaction size, ellen should have her staff at all 8 stores focus on upselling tech items.--
 -- a tech (laptop that cost 500.00) and a textbook ( that cost 100.00), tech has a higher revenue impact
 -- for online sales Ellen should focus on upselling tech items as well to close the 66.29 gap between Connecticut and new york for the average order value.
- 
+ -- she also hsa the lowest online transactions she need to increase online sales ---
